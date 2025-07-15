@@ -23,3 +23,7 @@ Ce projet a pour objectif de déployer un modèle de machine learning prédictif
 git clone https://github.com/FabParis20/P5_Deployez_un_modele_de_ML.git
 cd C:\Users\Fab\Documents\P5_Déployez_un_modèle_de_Machine_Learning
 pip install -r requirements.txt
+
+## 📂 Documentation
+
+- [Définition du workflow CI/CD](docs/ci-cd/definition-workflow.md)
