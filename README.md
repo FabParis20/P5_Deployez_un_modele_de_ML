@@ -20,6 +20,6 @@ Ce projet a pour objectif de déployer un modèle de machine learning prédictif
 
 **Installation :**
 ```bash
-git clone https://github.com/FabParis20/P5_D-ployez_un_mod-le_de_Machine_Learning.git
-cd P5_Déployez_un_modèle_de_Machine_Learning
+git clone https://github.com/FabParis20/P5_Deployez_un_modele_de_ML.git
+cd C:\Users\Fab\Documents\P5_Déployez_un_modèle_de_Machine_Learning
 pip install -r requirements.txt
