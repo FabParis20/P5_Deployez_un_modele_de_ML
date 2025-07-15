@@ -1,130 +1,148 @@
-# Phase préalable
-- Ajout des notebooks dans le répertoire notebooks (à faire)
-- README corrigé mais revoir la façon de faire (le push n'a pas fonctionné)
+# 📄 Définition du Workflow CI/CD – Projet 5
 
-# Phase 1
-## A faire
-- Lister les transformations à intégrer dans le pipeline
-- Intégrer dans le pipeline Python
-- Création du script Python qui convertit le notebook en pipeline prêt à l'emploi
+## 🎯 Objectif du Workflow
 
-## Objectif
-- Séparation nette : nettoyage qui sera converti en SQL + modélisation en Python
+Mettre en place un pipeline CI/CD complet qui :
 
-## Bonnes pratiques
-- Chaque modification = commit
+- Vérifie la qualité et la cohérence du code à chaque modification.
+- Exécute automatiquement les tests unitaires.
+- Prépare les artefacts nécessaires au déploiement.
+- Déploie la solution sur Hugging Face Spaces après validation manuelle.
 
-## Blocs
-### Bloc 1 : Refactoring pipeline Python
-- Création d'une branche
-- Codage de toutes les transormations post test/train dans le pipeline Python
-- Test en local
-- Si tout fonctionne, push
-### Bloc 2 : CI/CD tests + build
-- Déclencheur : push
-- Lancement des tests
-- Validation des tests
-- Build (raccordement au main)
-### Bloc 3 : CI/CD déploiement
+---
 
-## Evènements déclencheurs
-- Push sur dev :
- - Tests + build
- 
-- Pull request vers main
- - Tests + build
- - Validation humaine avant le déploiement (pour répondre à la question 
- : Quelle stratégie vas-tu adopter pour éviter un déploiement prématuré 
- à chaque push ?) 
- - Si go : déploiement sur Hugging Face Spaces
- 
- ## Questions (à supprimer de la définition du worklow une fois clarifiées
-- Je ne comprends pas :
-Comptes-tu écrire un changelog dans tes commits ?
+## 🛠️ Outils et technologies utilisés
 
-As-tu prévu de faire des branches spécifiques (ex. feature/pipeline_refactor) ?
+- **GitHub Actions** – orchestrateur du pipeline.
+- **Poetry** – gestion des dépendances et de l’environnement Python.
+- **Pytest** – exécution des tests automatiques.
+- **Hugging Face Spaces** – plateforme cible de déploiement.
+- **Git** – gestion des branches et des versions.
 
-Que signifie : "packaging si tu le prévois."
+---
 
-# Phase 2 (SQL)
-- Lister toutes les étapes de nettoyage
-- Les coder en SQL (Mission optionnelle du Projet 4)
-- Création d'un répertoire local SQL dans l'arborescence du Projet 5
-- Mise en place PostgreSQL (pas encore appris)
-- Démarrrer un contener PostgreSQL
-- Appliquer les scripts
-- Vérifications du bon fonctionnement
+## 🪝 Événements déclencheurs
 
- ## Questions (à supprimer de la définition du worklow une fois clarifiées
-- Comment mettre en place des scripts SQL testables ?
-- Je ne comprends pas les Questions :
- - As-tu prévu de dockeriser PostgreSQL dans le workflow YAML ?
- - Ou vas-tu utiliser une base cloud préexistante (avec secrets) ?
+Le pipeline se déclenche dans les cas suivants :
 
-1🔹 1. Reformule avec tes mots :
+1. **Push sur la branche `dev`**
+   - Exécution des tests automatiques.
+   - Vérification de la build.
+   - Pas de déploiement automatique.
 
-La définition du build.
-Le build vient après les tests et avant la phase de déploiement.
-Concrètement, c'est un assemblage, une préparation et une validation des
-fichiers finaux qui servirant au déploiement.
-Pour mon projet, c'est ce que je faisais déjà sans le savoir lors de ma préparation
-de mes soutenances de projet :
-Un zip correctement nommé incluant :
-- Mes notebooks - scripts compilés et testés
-- Un fichier TOML. Exemple :
-name = "projet-4-classifiez-automatiquement-des-informations"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "pandas>=2.2.3,<3.0.0",
-    "matplotlib>=3.10.3,<4.0.0",
-    "seaborn>=0.13.2,<0.14.0",
-    "jupyterlab>=4.4.2,<5.0.0",
-    "ipykernel>=6.29.5,<7.0.0",
-    "numpy>=2.2.0,<2.3.0",
-    "scikit-learn>=1.6.1,<2.0.0",
-    "missingno>=0.5.2,<1.0.0",
-    "xgboost>=3.0.2,<4.0.0",
-    "catboost>=1.2.8,<2.0.0",
-    "category-encoders>=2.8.1,<3.0.0",
-    "imbalanced-learn>=0.13.0,<0.14.0",
-    "shap>=0.48.0,<0.49.0"
-]
-- Un poetry lock
-- Eventuellement un README avec le descriptif des éléments envoyés
-, je dirais même que c'est recommandé
-- Un .bat ? Je ne suis pas sûr
-- J'ai un doute avec le .env parce que jusqu'à mainenant tu m'as aidé avec poetry
+2. **Pull Request vers la branche `main`**
+   - Exécution des tests automatiques.
+   - Vérification de la build.
+   - Validation manuelle obligatoire avant fusion.
+   - Si validation, déclenchement du déploiement automatique sur Hugging Face Spaces.
 
+---
 
+## 🏷️ Branches utilisées
 
-Le rôle exact du script de conversion (one-shot).
-- Permet d'effectuer automatiquement toutes les transformations
-nécessaires dans le ColumnTransformer après le split
+- `main` : branche de production (stable).
+- `dev` : branche de développement.
+- `feature/*` : branches spécifiques aux nouvelles fonctionnalités ou refactorings.
+- `hotfix/*` : branches de correction.
 
-Le schéma minimal des étapes du pipeline (tests, build, déploiement).
-- Test sur tout le notebook pipeline (run complet)
-- Si OK constitution du zip comme expliqué plus haut dans le build
-- Deploiement
+---
 
-🔹 2. Décide si tu souhaites :
+## ⚙️ Étapes du pipeline
 
-Mettre des branches nommées (feature/) ou rester simple.
-Oui je veux appliquer les Bonne pratiques de suite
+Le pipeline comprend les étapes suivantes :
 
-Préparer un changelog.
-Oui
+### 1️⃣ Tests automatiques
 
-Prévoir un test automatisé des scripts SQL (même basique).
+- Installation de l’environnement avec Poetry.
+- Lancement de Pytest.
+- Génération d’un rapport de test.
 
-🔹 3. Note dans un doc de travail :
+### 2️⃣ Build
 
-Ce que tu connais déjà.
-- Fondamentaux de git
-- Je commence à peine à appréhender le CI/CD, fiches obsidian initiation faites
+- Préparation de l’environnement prêt au déploiement.
 
-Ce que tu dois encore apprendre (Hugging Face, PostgreSQL, YAML avancé).
+> **À surveiller :**
+>
+> Le build pourra consister à constituer un ZIP incluant :
+> - Le pipeline sauvegardé.
+> - Le code de l’API.
+> - La configuration Poetry.
+> - Le README.
+> 
+> **Cependant**, sur Hugging Face Spaces, le build peut être implicite (le dépôt Git devient directement la source du déploiement).  
+> Il faudra vérifier à l’étape de configuration YAML si un packaging manuel est réellement nécessaire.
 
+### 3️⃣ Déploiement
 
+- Déploiement automatique après validation manuelle de la Pull Request.
+- Utilisation des secrets GitHub pour gérer les credentials.
+
+---
+
+## 🔐 Environnements et secrets
+
+- **Environnements GitHub :**
+  - `development` (tests).
+  - `production` (déploiement).
+
+- **Secrets attendus :**
+  - Variables de connexion à Hugging Face Spaces.
+  - (Optionnel) Credentials PostgreSQL si nécessaire plus tard.
+
+---
+
+## ✅ Conditions de succès
+
+- Tous les tests Pytest passent sans erreur.
+- La build est exempte de warnings critiques.
+- La validation manuelle de la Pull Request est réalisée avant le déploiement.
+- Le pipeline s’exécute en moins de 10 minutes.
+
+---
+
+## 📝 Standards de code et pratiques ML
+
+Un README spécifique décrira :
+
+- Les conventions de nommage des branches et des commits.
+- Les bonnes pratiques de versioning.
+- La structuration des scripts Python et SQL.
+- Les règles de validation des données.
+
+> **À surveiller :**
+>
+> Ce README des standards est prévu mais pas encore rédigé.  
+> Il devra être finalisé avant de considérer l’étape CI/CD totalement close.
+
+---
+
+## 🧪 Granularité des tests
+
+Actuellement, le pipeline prévoit des tests Pytest globaux.
+
+> **À surveiller :**
+>
+> Il faudra détailler précisément :
+> - Les cas de test à implémenter (même un test minimal).
+> - La vérification du chargement du pipeline.
+> - La vérification de la prédiction sur un exemple.
+
+---
+
+## 🧭 Prochaines étapes
+
+1. Rédiger le README des standards.
+2. Créer un YAML minimal de test du pipeline.
+3. Étendre le YAML avec les étapes de build et de déploiement.
+4. Configurer les secrets et environnements sur GitHub.
+5. Rédiger les premiers tests unitaires.
+6. Valider l’exécution complète du pipeline.
+
+---
+
+## 🔗 Références et documentation
+
+- [GitHub Actions Documentation](https://docs.github.com/actions)
+- [Hugging Face Spaces Documentation](https://huggingface.co/docs/hub/spaces)
+- [Poetry Documentation](https://python-poetry.org/docs/)
+- [Pytest Documentation](https://docs.pytest.org/)
