@@ -3,7 +3,7 @@ name = "P5_Déployez_un_modèle_de_Machine_Learning"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     "pandas>=2.2.3,<3.0.0",
     "matplotlib>=3.10.3,<4.0.0",
