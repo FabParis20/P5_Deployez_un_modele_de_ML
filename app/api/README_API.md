@@ -15,6 +15,29 @@ Cette API expose un point d'entrée pour prédire le risque de départ des emplo
 
 **Format JSON**
 
+## 🛠️ Format des données avant transformation
+
+Le pipeline d’entraînement attend initialement **42 variables brutes** (hors variable cible) :
+
+- Ces 42 colonnes correspondent aux données issues du DataFrame d’origine.
+- Elles incluent toutes les variables numériques, catégorielles, ordinales et binaires, non transformées.
+- La variable cible `a_quitte_l_entreprise` **ne doit pas être incluse** dans les données d’entrée.
+
+**Rappel :**
+- Nombre de colonnes brutes attendues = **42**
+- Nombre de colonnes après transformation = **64**
+
+---
+
+### ✅ Vérification recommandée
+
+Avant d’envoyer les données au pipeline, assurez-vous que :
+
+- Les colonnes sont présentes et nommées correctement.
+- Les valeurs manquantes ont été traitées si nécessaire.
+- Les colonnes sont converties dans les bons types (`int`, `float` ou `str`).
+
+
 Les données doivent contenir **64 variables numériques**, transformées selon le pipeline d'entraînement :
 
 ### 🧩 Variables numériques normalisées (MinMaxScaler)
