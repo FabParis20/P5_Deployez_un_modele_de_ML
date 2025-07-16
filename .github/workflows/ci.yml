@@ -1,13 +1,43 @@
-name: CI
+name: Workflow_CI_CD
 
 on:
-    push:
-        branches:
-            - dev
-    pull_requests:
-        branches:
-            - main
-    
-    jobs:
-        test:
-            runs-on: 
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Install Dependencies with Poetry
+        run: poetry install
+
+      - name: Run tests
+        run: poetry run pytest
+        
+      - name: Build project directory
+        run: |
+          mkdir build # Crée le dossier build 
+          cp -r app/ build/ # copie le dossier app
+          cp pyproject.toml build/ # copie le fichier toml
+          cp README.md build/
+          
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4 # Sauvegarde le tout comme artefact
+        with:
+          name: build-artifact
+          path: build
