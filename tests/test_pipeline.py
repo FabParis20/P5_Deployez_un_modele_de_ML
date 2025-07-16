@@ -7,8 +7,9 @@ def test_pipeline_predict():
     """
     pipeline = load_pipeline()
 
-    # Exemple factice : adapte le nombre de colonnes si besoin
-    X_test = np.array([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]])
+    # Création d'un array 1 ligne 42 colonnes (nb colonnes entrée pipeline)
+    X_test = np.zeros((1, 42))
+
 
     y_pred = pipeline.predict(X_test)
 
