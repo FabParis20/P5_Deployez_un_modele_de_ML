@@ -1,15 +1,9 @@
 import joblib
-import os
+from app.utils.binary_mapper import BinaryMapper
 
 def load_pipeline():
     """
     Charge le pipeline ML sauvegardé.
     """
-    # Chemin vers le fichier du pipeline
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    pipeline_path = os.path.join(current_dir, "pipeline.joblib")
-
-    # Charger le pipeline
-    pipeline = joblib.load(pipeline_path)
-
+    pipeline = joblib.load("C:/Users/Fab/Documents/P5_Déployez_un_modèle_de_Machine_Learning/app/models/pipeline.joblib")
     return pipeline
