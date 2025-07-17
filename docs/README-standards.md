@@ -41,7 +41,11 @@ fix: corrige l'erreur de prédiction (#42)
 - chore: tâches diverses (mise à jour dépendances, etc.)
 
 **Exemple :**
-feat: ajout du pipeline complet dans scikit-learn
+```bash
+✅ test(pipeline): ajout d’un test minimal de prédiction
+🐛 fix(model): suppression d’une feature mal encodée
+```
+
 
 ---
 
@@ -67,25 +71,32 @@ feat: ajout du pipeline complet dans scikit-learn
 - Chaque fonctionnalité importante doit avoir au moins un test unitaire.
 - Un test minimal est requis pour vérifier :
   - Le chargement du pipeline ML.
-  - La production d'une prédiction sur un exemple.
+  - Une prédiction est possible via un DataFrame conforme.
+  - Utilisation d’un fichier feature_names.py pour centraliser la liste des features attendues.
+
 
 **Exemple de test minimal :**
 ```python
 def test_pipeline_predict():
-    from app.models import load_pipeline
     pipeline = load_pipeline()
-    result = pipeline.predict([[0, 1, 2, 3]])
-    assert result in [0, 1]
+    X = pd.DataFrame([np.zeros(len(FEATURE_NAMES))], columns=FEATURE_NAMES)
+    y_pred = pipeline.predict(X)
+    assert y_pred.shape == (1,)
 ```
 
-> **À compléter :**
-> La granularité et le périmètre exact des tests seront précisés après implémentation.
 
 ---
 
 ## ⚙️ Workflow CI/CD
 
 - Utilisation de GitHub Actions.
+- Fichier : .github/workflows/Workflow_CI_CD.yml
+- Etapes actuelles :
+ -  Installation de Python et Poetry
+ - Installation des dépendances
+ - Lancement des tests via pytest
+ - Création du répertoire build avec app/, pyproject.toml, README.md
+ - Upload de l’artefact de build
 - Déclencheurs :
   - Push sur dev : tests et build.
   - Pull Request vers main : tests, build et validation manuelle avant déploiement.
@@ -103,11 +114,9 @@ def test_pipeline_predict():
 
 ---
 
-## 📝 Mise à jour du présent document
+## 📝 Mise à jour du présent document (17/07/2025)
 
-> Ce document est une version initiale.
->
-> **Il sera complété** après :
-> - Le choix final des options de tests et de leur granularité.
-> - La rédaction précise des cas de test.
-> - La validation finale du pipeline CI/CD.
+Ce document est vivant et sera mis à jour à mesure que :
+- Les cas de test seront précisés
+- Le pipeline CI/CD sera complété (ex: déploiement auto)
+- Les environnements seront pleinement configurés
