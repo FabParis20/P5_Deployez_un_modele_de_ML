@@ -1,5 +1,7 @@
 import numpy as np
+import pandas as pd
 from app.models.load_pipeline import load_pipeline
+from app.models.dummy_data import DUMMY_DATA  # ✅ On importe ici le dictionnaire validé
 
 def test_pipeline_predict():
     """
@@ -7,11 +9,12 @@ def test_pipeline_predict():
     """
     pipeline = load_pipeline()
 
-    # Création d'un array 1 ligne 42 colonnes (nb colonnes entrée pipeline)
-    X_test = np.zeros((1, 42))
+    # Construction d’un DataFrame avec une seule ligne de données simulées
+    X_test = pd.DataFrame([DUMMY_DATA])
 
-
+    # Prédiction
     y_pred = pipeline.predict(X_test)
 
-    assert isinstance(y_pred, (list, np.ndarray))
-    assert len(y_pred) == 1
+    # Vérifications
+    assert isinstance(y_pred, (np.ndarray, list)), "La prédiction doit être un tableau ou une liste"
+    assert len(y_pred) == 1, "La prédiction doit contenir une seule valeur"
