@@ -28,3 +28,4 @@ pip install -r requirements.txt
 
 - [Définition du workflow CI/CD](docs/ci-cd/definition-workflow.md)
 - [Standards de code et pratiques ML](docs/README-standards.md)
+- 
