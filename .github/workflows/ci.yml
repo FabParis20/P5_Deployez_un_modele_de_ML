@@ -43,7 +43,7 @@ jobs:
         run: poetry install --no-root
 
       - name: ✅ Run tests with Pytest
-        run: poetry run pytest
+        run: poetry run pytest -v tests/
 
       - name: 🏗️ Build project directory
         run: |
