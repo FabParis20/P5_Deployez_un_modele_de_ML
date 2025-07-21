@@ -5,7 +5,7 @@
 
 FEATURE_NAMES = [
 
-    # 1️⃣ MinMaxScaler (24 variables numériques continues normalisées)
+    # 1️⃣ MinMaxScaler (21 variables numériques continues normalisées)
     "revenu_mensuel",
     "age",
     "annee_experience_totale",
@@ -21,23 +21,22 @@ FEATURE_NAMES = [
     "taux_de_formation",
     "interaction_distance_heures_sup",
     "surmenage_transports",
-    "revenu_stable",
     "distance_domicile_travail",
     "nb_formations_suivies",
-    "delta_eval_x_revenu_stable",
-    "delta_evaluation",
     "nombre_experiences_precedentes",
     "annees_depuis_la_derniere_promotion",
     "frequence_deplacement_num",
-    "augmentation_salaire_precedente",
+    "augementation_salaire_precedente",
 
-    # 2️⃣ OneHotEncoder (28 variables catégorielles transformées en dummies)
+    # 2️⃣ OneHotEncoder (modalités catégorielles nominales)
     "statut_marital_Célibataire",
     "statut_marital_Divorcé(e)",
     "statut_marital_Marié(e)",
+
     "departement_Commercial",
     "departement_Consulting",
     "departement_Ressources Humaines",
+
     "poste_Assistant de Direction",
     "poste_Cadre Commercial",
     "poste_Consultant",
@@ -47,41 +46,32 @@ FEATURE_NAMES = [
     "poste_Ressources Humaines",
     "poste_Senior Manager",
     "poste_Tech Lead",
+
     "domaine_etude_Autre",
     "domaine_etude_Entrepreunariat",
     "domaine_etude_Infra & Cloud",
     "domaine_etude_Marketing",
     "domaine_etude_Ressources Humaines",
     "domaine_etude_Transformation Digitale",
-    "distance_domicile_travail_qcut_loin",
-    "distance_domicile_travail_qcut_moyen_loin",
-    "distance_domicile_travail_qcut_moyen_proche",
-    "distance_domicile_travail_qcut_proche",
+
     "tranche_age_Intermédiaire",
     "tranche_age_Junior",
     "tranche_age_Senior",
 
     # 3️⃣ Ordinal Numérique
     "niveau_education",
-    "satisfaction_employee_environnement",
     "note_evaluation_precedente",
+    "note_evaluation_actuelle",
     "niveau_hierarchique_poste",
+    "satisfaction_employee_environnement",
     "satisfaction_employee_nature_travail",
     "satisfaction_employee_equipe",
     "satisfaction_employee_equilibre_pro_perso",
-    "note_evaluation_actuelle",
 
-    # 4️⃣ Ordinal Texte
-    "frequence_deplacement",
-
-    # 5️⃣ BinaryMapper
+    # 4️⃣ Binary (déjà encodées)
     "genre_binaire",
-    "heures_supplementaires_binaire",
-
-    # 6️⃣ BinaryPass
-    "heures_supplementaires_binaire_passthrough"
+    "heures_supplementaires_binaire"
 ]
-
 
 # =============================================
 # 🏗️ Colonnes brutes attendues en entrée du pipeline
@@ -104,31 +94,25 @@ INPUT_FEATURES = [
     "taux_de_formation",
     "interaction_distance_heures_sup",
     "surmenage_transports",
-    "revenu_stable",
     "distance_domicile_travail",
     "nb_formations_suivies",
-    "delta_eval_x_revenu_stable",
-    "delta_evaluation",
     "nombre_experiences_precedentes",
     "annees_depuis_la_derniere_promotion",
     "frequence_deplacement_num",
-    "augmentation_salaire_precedente",
+    "augementation_salaire_precedente",
     "statut_marital",
     "departement",
     "poste",
     "domaine_etude",
-    "distance_domicile_travail_qcut",
     "tranche_age",
     "niveau_education",
-    "satisfaction_employee_environnement",
     "note_evaluation_precedente",
+    "note_evaluation_actuelle",
     "niveau_hierarchique_poste",
+    "satisfaction_employee_environnement",
     "satisfaction_employee_nature_travail",
     "satisfaction_employee_equipe",
     "satisfaction_employee_equilibre_pro_perso",
-    "note_evaluation_actuelle",
-    "frequence_deplacement",
-    "genre",
-    "heures_supplementaires",
+    "genre_binaire",
     "heures_supplementaires_binaire"
 ]

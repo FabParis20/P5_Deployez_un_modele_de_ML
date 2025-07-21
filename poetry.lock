@@ -261,26 +261,6 @@ six = "*"
 widget = ["ipython", "ipywidgets (>=7.0,<9.0)", "traitlets"]
 
 [[package]]
-name = "category-encoders"
-version = "2.8.1"
-description = "A package for encoding categorical variables for machine learning"
-optional = false
-python-versions = ">=3.10"
-groups = ["main"]
-files = [
-    {file = "category_encoders-2.8.1-py3-none-any.whl", hash = "sha256:ba77bde0a0afe13732b04997635b1ae82569e42c9696bc361c68674197988303"},
-    {file = "category_encoders-2.8.1.tar.gz", hash = "sha256:57af8a23bde3cf622ee7e17c11547011795e4d337839d40cbd16c36b67291b33"},
-]
-
-[package.dependencies]
-numpy = ">=1.14.0"
-pandas = ">=1.0.5"
-patsy = ">=0.5.1"
-scikit-learn = ">=1.6.0"
-scipy = ">=1.0.0"
-statsmodels = ">=0.9.0"
-
-[[package]]
 name = "certifi"
 version = "2025.6.15"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -473,21 +453,6 @@ files = [
     {file = "charset_normalizer-3.4.2-py3-none-any.whl", hash = "sha256:7f56930ab0abd1c45cd15be65cc741c28b1c9a34876ce8c17a2fa107810c0af0"},
     {file = "charset_normalizer-3.4.2.tar.gz", hash = "sha256:5baececa9ecba31eff645232d59845c07aa030f0c81ee70184a90d35099a0e63"},
 ]
-
-[[package]]
-name = "click"
-version = "8.2.1"
-description = "Composable command line interface toolkit"
-optional = false
-python-versions = ">=3.10"
-groups = ["main"]
-files = [
-    {file = "click-8.2.1-py3-none-any.whl", hash = "sha256:61a3265b914e850b85317d0b3109c7f8cd35a670f963866005d6ef1d5175a12b"},
-    {file = "click-8.2.1.tar.gz", hash = "sha256:27c491cc05d968d271d5a1db13e3b5a184636d9d930f148c50b038f0d0646202"},
-]
-
-[package.dependencies]
-colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
 [[package]]
 name = "cloudpickle"
@@ -883,35 +848,6 @@ files = [
 
 [package.extras]
 all = ["flake8 (>=7.1.1)", "mypy (>=1.11.2)", "pytest (>=8.3.2)", "ruff (>=0.6.2)"]
-
-[[package]]
-name = "imbalanced-learn"
-version = "0.13.0"
-description = "Toolbox for imbalanced dataset in machine learning"
-optional = false
-python-versions = ">=3.10"
-groups = ["main"]
-files = [
-    {file = "imbalanced_learn-0.13.0-py3-none-any.whl", hash = "sha256:7eb5859f7827cb3babfa5789978c22fe36e56527d9c9768df2d864d98d9b40fe"},
-    {file = "imbalanced_learn-0.13.0.tar.gz", hash = "sha256:d4a8d6372086982350d6de1c7e5b1ed5ece9e41bf93043b4d0e9ea1c422a6606"},
-]
-
-[package.dependencies]
-joblib = ">=1.1.1,<2"
-numpy = ">=1.24.3,<3"
-scikit-learn = ">=1.3.2,<2"
-scipy = ">=1.10.1,<2"
-sklearn-compat = ">=0.1,<1"
-threadpoolctl = ">=2.0.0,<4"
-
-[package.extras]
-dev = ["ipykernel", "ipython", "jupyterlab"]
-docs = ["matplotlib (>=3.7.3,<4)", "memory_profiler (>=0.61.0,<1)", "numpydoc (>=1.5.0,<2)", "pandas (>=1.5.3,<3)", "pydata-sphinx-theme (>=0.15.4,<1)", "seaborn (>=0.12.2,<1)", "sphinx (>=8.0.2,<9)", "sphinx-copybutton (>=0.5.2,<1)", "sphinx-design (>=0.6.1,<1)", "sphinx-gallery (>=0.13.0,<1)", "sphinxcontrib-bibtex (>=2.6.3,<3)", "tensorflow (>=2.13.1,<3)"]
-keras = ["keras (>=3.0.5,<4)"]
-linters = ["black (==23.3.0)", "pre-commit", "ruff (==0.4.8)"]
-optional = ["pandas (>=1.5.3,<3)"]
-tensorflow = ["tensorflow (>=2.13.1,<3)"]
-tests = ["packaging (>=23.2,<25)", "pytest (>=7.2.2,<9)", "pytest-cov (>=4.1.0,<6)", "pytest-xdist (>=3.5.0,<4)"]
 
 [[package]]
 name = "iniconfig"
@@ -2046,24 +1982,6 @@ qa = ["flake8 (==5.0.4)", "mypy (==0.971)", "types-setuptools (==67.2.0.1)"]
 testing = ["docopt", "pytest"]
 
 [[package]]
-name = "patsy"
-version = "1.0.1"
-description = "A Python package for describing statistical models and for building design matrices."
-optional = false
-python-versions = ">=3.6"
-groups = ["main"]
-files = [
-    {file = "patsy-1.0.1-py2.py3-none-any.whl", hash = "sha256:751fb38f9e97e62312e921a1954b81e1bb2bcda4f5eeabaf94db251ee791509c"},
-    {file = "patsy-1.0.1.tar.gz", hash = "sha256:e786a9391eec818c054e359b737bbce692f051aee4c661f4141cc88fb459c0c4"},
-]
-
-[package.dependencies]
-numpy = ">=1.4"
-
-[package.extras]
-test = ["pytest", "pytest-cov", "scipy"]
-
-[[package]]
 name = "pexpect"
 version = "4.9.0"
 description = "Pexpect allows easy control of interactive console applications."
@@ -3061,27 +2979,6 @@ files = [
 ]
 
 [[package]]
-name = "sklearn-compat"
-version = "0.1.3"
-description = "Ease support for compatible scikit-learn estimators across versions"
-optional = false
-python-versions = ">=3.8"
-groups = ["main"]
-files = [
-    {file = "sklearn_compat-0.1.3-py3-none-any.whl", hash = "sha256:a8aaf8ef711988cbd63f187c5560b5f16b25df663aaa1d2d0e1291341d339f80"},
-    {file = "sklearn_compat-0.1.3.tar.gz", hash = "sha256:74f8267613249d599aa3a2f2503af32fa51bce0800b1b0b0a57b52354402454e"},
-]
-
-[package.dependencies]
-scikit-learn = ">=1.2,<1.7"
-
-[package.extras]
-dev = ["ipython"]
-docs = ["mkdocs", "mkdocs-material"]
-lint = ["pre-commit"]
-tests = ["pandas", "pytest", "pytest-cov", "pytest-xdist", "pytz"]
-
-[[package]]
 name = "slicer"
 version = "0.0.8"
 description = "A small package for big slicing."
@@ -3136,58 +3033,6 @@ pure-eval = "*"
 
 [package.extras]
 tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
-
-[[package]]
-name = "statsmodels"
-version = "0.14.4"
-description = "Statistical computations and models for Python"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "statsmodels-0.14.4-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:7a62f1fc9086e4b7ee789a6f66b3c0fc82dd8de1edda1522d30901a0aa45e42b"},
-    {file = "statsmodels-0.14.4-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:46ac7ddefac0c9b7b607eed1d47d11e26fe92a1bc1f4d9af48aeed4e21e87981"},
-    {file = "statsmodels-0.14.4-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2a337b731aa365d09bb0eab6da81446c04fde6c31976b1d8e3d3a911f0f1e07b"},
-    {file = "statsmodels-0.14.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:631bb52159117c5da42ba94bd94859276b68cab25dc4cac86475bc24671143bc"},
-    {file = "statsmodels-0.14.4-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:3bb2e580d382545a65f298589809af29daeb15f9da2eb252af8f79693e618abc"},
-    {file = "statsmodels-0.14.4-cp310-cp310-win_amd64.whl", hash = "sha256:9729642884147ee9db67b5a06a355890663d21f76ed608a56ac2ad98b94d201a"},
-    {file = "statsmodels-0.14.4-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:5ed7e118e6e3e02d6723a079b8c97eaadeed943fa1f7f619f7148dfc7862670f"},
-    {file = "statsmodels-0.14.4-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:f5f537f7d000de4a1708c63400755152b862cd4926bb81a86568e347c19c364b"},
-    {file = "statsmodels-0.14.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:aa74aaa26eaa5012b0a01deeaa8a777595d0835d3d6c7175f2ac65435a7324d2"},
-    {file = "statsmodels-0.14.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e332c2d9b806083d1797231280602340c5c913f90d4caa0213a6a54679ce9331"},
-    {file = "statsmodels-0.14.4-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:d9c8fa28dfd75753d9cf62769ba1fecd7e73a0be187f35cc6f54076f98aa3f3f"},
-    {file = "statsmodels-0.14.4-cp311-cp311-win_amd64.whl", hash = "sha256:a6087ecb0714f7c59eb24c22781491e6f1cfffb660b4740e167625ca4f052056"},
-    {file = "statsmodels-0.14.4-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:5221dba7424cf4f2561b22e9081de85f5bb871228581124a0d1b572708545199"},
-    {file = "statsmodels-0.14.4-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:17672b30c6b98afe2b095591e32d1d66d4372f2651428e433f16a3667f19eabb"},
-    {file = "statsmodels-0.14.4-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ab5e6312213b8cfb9dca93dd46a0f4dccb856541f91d3306227c3d92f7659245"},
-    {file = "statsmodels-0.14.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4bbb150620b53133d6cd1c5d14c28a4f85701e6c781d9b689b53681effaa655f"},
-    {file = "statsmodels-0.14.4-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:bb695c2025d122a101c2aca66d2b78813c321b60d3a7c86bb8ec4467bb53b0f9"},
-    {file = "statsmodels-0.14.4-cp312-cp312-win_amd64.whl", hash = "sha256:7f7917a51766b4e074da283c507a25048ad29a18e527207883d73535e0dc6184"},
-    {file = "statsmodels-0.14.4-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:b5a24f5d2c22852d807d2b42daf3a61740820b28d8381daaf59dcb7055bf1a79"},
-    {file = "statsmodels-0.14.4-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:df4f7864606fa843d7e7c0e6af288f034a2160dba14e6ccc09020a3cf67cb092"},
-    {file = "statsmodels-0.14.4-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:91341cbde9e8bea5fb419a76e09114e221567d03f34ca26e6d67ae2c27d8fe3c"},
-    {file = "statsmodels-0.14.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1322286a7bfdde2790bf72d29698a1b76c20b8423a55bdcd0d457969d0041f72"},
-    {file = "statsmodels-0.14.4-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:e31b95ac603415887c9f0d344cb523889cf779bc52d68e27e2d23c358958fec7"},
-    {file = "statsmodels-0.14.4-cp313-cp313-win_amd64.whl", hash = "sha256:81030108d27aecc7995cac05aa280cf8c6025f6a6119894eef648997936c2dd0"},
-    {file = "statsmodels-0.14.4-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:4793b01b7a5f5424f5a1dbcefc614c83c7608aa2b035f087538253007c339d5d"},
-    {file = "statsmodels-0.14.4-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:d330da34f59f1653c5193f9fe3a3a258977c880746db7f155fc33713ea858db5"},
-    {file = "statsmodels-0.14.4-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:6e9ddefba1d4e1107c1f20f601b0581421ea3ad9fd75ce3c2ba6a76b6dc4682c"},
-    {file = "statsmodels-0.14.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6f43da7957e00190104c5dd0f661bfc6dfc68b87313e3f9c4dbd5e7d222e0aeb"},
-    {file = "statsmodels-0.14.4-cp39-cp39-win_amd64.whl", hash = "sha256:8286f69a5e1d0e0b366ffed5691140c83d3efc75da6dbf34a3d06e88abfaaab6"},
-    {file = "statsmodels-0.14.4.tar.gz", hash = "sha256:5d69e0f39060dc72c067f9bb6e8033b6dccdb0bae101d76a7ef0bcc94e898b67"},
-]
-
-[package.dependencies]
-numpy = ">=1.22.3,<3"
-packaging = ">=21.3"
-pandas = ">=1.4,<2.1.0 || >2.1.0"
-patsy = ">=0.5.6"
-scipy = ">=1.8,<1.9.2 || >1.9.2"
-
-[package.extras]
-build = ["cython (>=3.0.10)"]
-develop = ["colorama", "cython (>=3.0.10)", "cython (>=3.0.10,<4)", "flake8", "isort", "joblib", "matplotlib (>=3)", "pytest (>=7.3.0,<8)", "pytest-cov", "pytest-randomly", "pytest-xdist", "pywinpty ; os_name == \"nt\"", "setuptools-scm[toml] (>=8.0,<9.0)"]
-docs = ["ipykernel", "jupyter-client", "matplotlib", "nbconvert", "nbformat", "numpydoc", "pandas-datareader", "sphinx"]
 
 [[package]]
 name = "terminado"
@@ -3372,25 +3217,6 @@ socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
-name = "uvicorn"
-version = "0.35.0"
-description = "The lightning-fast ASGI server."
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "uvicorn-0.35.0-py3-none-any.whl", hash = "sha256:197535216b25ff9b785e29a0b79199f55222193d47f820816e7da751e9bc8d4a"},
-    {file = "uvicorn-0.35.0.tar.gz", hash = "sha256:bc662f087f7cf2ce11a1d7fd70b90c9f98ef2e2831556dd078d131b96cc94a01"},
-]
-
-[package.dependencies]
-click = ">=7.0"
-h11 = ">=0.8"
-
-[package.extras]
-standard = ["colorama (>=0.4) ; sys_platform == \"win32\"", "httptools (>=0.6.3)", "python-dotenv (>=0.13)", "pyyaml (>=5.1)", "uvloop (>=0.15.1) ; sys_platform != \"win32\" and sys_platform != \"cygwin\" and platform_python_implementation != \"PyPy\"", "watchfiles (>=0.13)", "websockets (>=10.4)"]
-
-[[package]]
 name = "wcwidth"
 version = "0.2.13"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -3476,4 +3302,4 @@ scikit-learn = ["scikit-learn"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11"
-content-hash = "b35e8b9bb3ea33a5b0a29b53db038c55255e7907d1045af2ba1dfe997a0c2520"
+content-hash = "5039a4bae360a04cefe02227492dbc19815bc2ad02b28ca0305f406c7fcff2d0"
