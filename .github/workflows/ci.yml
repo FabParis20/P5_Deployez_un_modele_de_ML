@@ -4,40 +4,57 @@ on:
   push:
     branches:
       - dev
+      - main
   pull_request:
+    branches:
+      - main
+      - dev
+  pull_request_target:
     branches:
       - main
 
 jobs:
   tests:
+    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Poetry
+      - name: 📦 Cache Poetry dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pypoetry
+            ~/.virtualenvs
+          key: poetry-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            poetry-${{ runner.os }}-
+
+      - name: 🛠 Install Poetry
         run: pipx install poetry
 
-      - name: Install Dependencies with Poetry
+      - name: 📦 Install dependencies with Poetry
         run: poetry install --no-root
 
-      - name: Run tests
-        run: poetry run pytest
-        
-      - name: Build project directory
+      - name: ✅ Run tests with Pytest
+        run: poetry run pytest -v tests/
+
+      - name: 🏗️ Build project directory
         run: |
-          mkdir build # Crée le dossier build 
-          cp -r app/ build/ # copie le dossier app
-          cp pyproject.toml build/ # copie le fichier toml
+          mkdir build
+          cp -r app/ build/
+          cp pyproject.toml build/
           cp README.md build/
-          
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4 # Sauvegarde le tout comme artefact
+
+      - name: ⬆️ Upload build artifact
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifact
           path: build

@@ -37,3 +37,6 @@ Thumbs.db
 # SQL dumps or backups
 *.sql
 *.sqlite3
+
+# BAT démarrage Jupyter LAb
+jupyter_lab_P5.bat
