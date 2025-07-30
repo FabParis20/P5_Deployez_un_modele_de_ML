@@ -1,9 +1,7 @@
 # 🎯 Schéma relationnel textuel (PostgreSQL) – Projet 5
 
-Ce document décrit le schéma relationnel PostgreSQL mis en place dans le cadre du Projet 5 – Déploiement d’un modèle de Machine Learning.  
-Il vise à reconstruire en SQL les données utilisées dans le pipeline Python, à partir de trois sources CSV distinctes : **SIRH**, **Évaluations annuelles**, et **Sondage bien-être**.
+Ce schéma décrit les relations SQL mises en place pour reproduire les étapes de nettoyage et de feature engineering initialement codées en Python.
 
-Ce schéma sert de base à la création d’une table finale reproduisant le dataset `employes_net_refacto.csv`, construit initialement en Python après exploration, nettoyage et feature engineering.
 
 ## 🟦 Table `sirh` (source brute RH)
 
@@ -68,10 +66,7 @@ Les trois tables sources seront reliées à partir de clés (explícites ou à n
 
 - `sirh.id_employee` → **clé primaire**
 - `evaluations_annuelles.eval_number` → **doit être nettoyée** (`E_` supprimé, castée en `INTEGER`) pour correspondre à `sirh.id_employee`
-- `sondage_bien_etre.code_sondage` → **correspond directement** à `sirh.id_employee` (à vérifier)
-
-> ⚠️ Ces jointures doivent être explicites dans le script SQL (par des `CAST`, `REPLACE`, ou des colonnes temporaires), pour garantir la cohérence avec la table cible `dataset_pipeline_final`.
-
+- `sondage_bien_etre.code_sondage` → **correspond directement** à `sirh.id_employee` 
 
 ## 🟪 Table `dataset_pipeline_final`
 
@@ -80,46 +75,3 @@ Les trois tables sources seront reliées à partir de clés (explícites ou à n
 > - Transformations numériques (`genre_binaire`, `age_revenu`, etc.)
 > - Encodages (`tranche_age`, `frequence_deplacement_num`, etc.)
 > - Variables dérivées (`interaction_satisfaction_anciennete`, `taux_de_formation`, etc.)
-
-Cette table sera créée **en SQL** à partir des 3 sources précédentes, via une jointure (`JOIN`) et un ensemble de transformations qui reproduisent les étapes de nettoyage et de feature engineering effectuées dans le pipeline Python.
-
-Elle servira de **base d'entrée** pour l'inférence avec le modèle sérialisé (`pipeline.joblib`).
-
-
-## 📐 Schéma relationnel simplifié (ASCII)
-
-            +-----------------------------+
-            |            sirh             |
-            +-----------------------------+
-            | id_employee (PK)            |
-            | ...                         |
-            +-----------------------------+
-                   |               |
-                   |               |
-        +----------+               +-------------+
-        |                                        |
-+------------------------+         +-------------------------+
-|  evaluations_annuelles |         |    sondage_bien_etre    |
-+------------------------+         +-------------------------+
-| eval_number* (FK)      |         | code_sondage* (FK)      |
-| ...                    |         | ...                     |
-+------------------------+         +-------------------------+
-
-                   |
-                   v
-
-       +-----------------------------+
-       | dataset_pipeline_final     |
-       +-----------------------------+
-       | 37 colonnes finales         |
-       +-----------------------------+
-
-* = clé à nettoyer ou transformer pour la jointure
-
-## 📈 Diagramme relationnel (graphique)
-
-> 🎨 Cette version textuelle du schéma pourra être complétée plus tard par un diagramme visuel (UML ou Mermaid), si besoin dans un rapport ou une soutenance.
-
-> 📌 Suggestions d’outils : [dbdiagram.io](https://dbdiagram.io/), [drawsql.app](https://drawsql.app), ou export Obsidian (Mermaid).
-
-🔗 Les scripts SQL exécutables sont disponibles dans le répertoire sql/.
