@@ -122,3 +122,4 @@ Elle servira de **base d'entrée** pour l'inférence avec le modèle sérialisé
 
 > 📌 Suggestions d’outils : [dbdiagram.io](https://dbdiagram.io/), [drawsql.app](https://drawsql.app), ou export Obsidian (Mermaid).
 
+🔗 Les scripts SQL exécutables sont disponibles dans le répertoire sql/.

@@ -120,3 +120,4 @@ Ce document est vivant et sera mis à jour à mesure que :
 - Les cas de test seront précisés
 - Le pipeline CI/CD sera complété (ex: déploiement auto)
 - Les environnements seront pleinement configurés
+-
