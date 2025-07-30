@@ -95,3 +95,21 @@ Ce dépôt **actuel** se concentre sur :
 - 🧪 [Standards de code et pratiques ML](docs/README-standards.md)
 - ⚙️ [Workflow CI/CD](docs/ci-cd/definition-workflow.md)
 - 🧱 [Schéma relationnel PostgreSQL](docs/sql/schema_base_donnees.md)
+
+## Notes complémentaires
+### 📁 notebooks/catboost_info/
+Ce dossier contient les logs générés automatiquement par CatBoost lors de l’entraînement du modèle (learn_error.tsv, catboost_training.json, etc.).
+Il est facultatif et non requis pour la reproduction du pipeline ou l’inférence.
+
+🔍 Il est conservé ici uniquement à titre de référence pour le suivi des performances du modèle pendant l’entraînement.
+
+### 🧪 sql/tests/test_vue_features.sql
+Ce script contient des requêtes de test SQL permettant de :
+
+- vérifier l’existence de la vue vue_nettoyage_et_features_engineered
+- inspecter ses premières lignes
+- contrôler la présence des colonnes de features dérivées attendues
+
+🧰 Utile lors de la phase de débogage et de validation de la vue SQL.
+✅ Ce fichier est optionnel et ne joue aucun rôle dans l’exécution normale du pipeline.
+
