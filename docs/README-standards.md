@@ -65,58 +65,15 @@ fix: corrige l'erreur de prédiction (#42)
 
 ---
 
-## 🧪 Pratiques de test
+🧪 Pratiques de test
 
-- Les tests sont écrits avec Pytest.
-- Chaque fonctionnalité importante doit avoir au moins un test unitaire.
-- Un test minimal est requis pour vérifier :
-  - Le chargement du pipeline ML.
-  - Une prédiction est possible via un DataFrame conforme.
-  - Utilisation d’un fichier feature_names.py pour centraliser la liste des features attendues.
+Les tests sont écrits avec Pytest.
 
+Un test minimal est fourni dans ce dépôt pour vérifier :
+- Le chargement du pipeline ML (`get_pipeline()`)
+- La capacité du pipeline à effectuer une prédiction à partir d’un `DataFrame` conforme
 
-**Exemple de test minimal :**
-```python
-def test_pipeline_predict():
-    pipeline = load_pipeline()
-    X = pd.DataFrame([np.zeros(len(FEATURE_NAMES))], columns=FEATURE_NAMES)
-    y_pred = pipeline.predict(X)
-    assert y_pred.shape == (1,)
-```
+📌 Les tests liés à l’API FastAPI (erreurs 404, prédiction via endpoint, enregistrement en BDD, etc.) sont décrits dans le dépôt dédié à la phase 2.
 
 
----
 
-## ⚙️ Workflow CI/CD
-
-- Utilisation de GitHub Actions.
-- Fichier : .github/workflows/Workflow_CI_CD.yml
-- Etapes actuelles :
- -  Installation de Python et Poetry
- - Installation des dépendances
- - Lancement des tests via pytest
- - Création du répertoire build avec app/, pyproject.toml, README.md
- - Upload de l’artefact de build
-- Déclencheurs :
-  - Push sur dev : tests et build.
-  - Pull Request vers main : tests, build et validation manuelle avant déploiement.
-- Le déploiement cible est Hugging Face Spaces.
-- Fichier YAML principal :
-.github/workflows/ci.yml
-
----
-
-## 🛡️ Gestion des environnements
-
-- development : environnement de test.
-- production : environnement de déploiement.
-- Les secrets (API keys, credentials) sont gérés via GitHub Secrets.
-
----
-
-## 📝 Mise à jour du présent document (17/07/2025)
-
-Ce document est vivant et sera mis à jour à mesure que :
-- Les cas de test seront précisés
-- Le pipeline CI/CD sera complété (ex: déploiement auto)
-- Les environnements seront pleinement configurés
