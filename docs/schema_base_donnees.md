@@ -70,8 +70,60 @@ Les trois tables sources seront reliées à partir de clés (explícites ou à n
 
 ## 🟪 Table `dataset_pipeline_final`
 
-> 📁 **Fichier correspondant (pipeline Python)** : `data/employes_net_refacto.csv`  
-> 🧮 Colonnes : 37 variables, dont :
-> - Transformations numériques (`genre_binaire`, `age_revenu`, etc.)
-> - Encodages (`tranche_age`, `frequence_deplacement_num`, etc.)
-> - Variables dérivées (`interaction_satisfaction_anciennete`, `taux_de_formation`, etc.)
+
+| Colonne                                      | Type               |
+|---------------------------------------------|--------------------|
+| id_employee                                  | integer            |
+| age                                          | integer            |
+| revenu_mensuel                               | integer            |
+| statut_marital                               | character varying(15) |
+| departement                                  | character varying(50) |
+| poste                                        | character varying(50) |
+| nombre_experiences_precedentes              | integer            |
+| annee_experience_totale                     | integer            |
+| annees_dans_l_entreprise                    | integer            |
+| annees_dans_le_poste_actuel                 | integer            |
+| niveau_hierarchique_poste                   | integer            |
+| note_evaluation_precedente                  | integer            |
+| note_evaluation_actuelle                    | integer            |
+| satisfaction_employee_environnement         | integer            |
+| satisfaction_employee_equilibre_pro_perso   | integer            |
+| satisfaction_employee_equipe                | integer            |
+| satisfaction_employee_nature_travail        | integer            |
+| nb_formations_suivies                       | integer            |
+| distance_domicile_travail                   | integer            |
+| niveau_education                            | integer            |
+| domaine_etude                               | character varying(50) |
+| nombre_participation_pee                    | integer            |
+| annees_depuis_la_derniere_promotion         | integer            |
+| genre_binaire                                | integer            |
+| heures_supplementaires_binaire              | integer            |
+| a_quitte_l_entreprise                       | integer            |
+| augementation_salaire_precedente            | double precision   |
+| annes_sous_responsable_actuel               | integer            |
+| frequence_deplacement_num                   | integer            |
+| age_revenu                                   | integer            |
+| interaction_distance_heures_sup             | integer            |
+| satisfaction_moyenne                        | numeric            |
+| interaction_satisfaction_anciennete         | numeric            |
+| ratio_sous_responsable                      | double precision   |
+| ratio_stagnation                            | double precision   |
+| taux_de_formation                           | double precision   |
+| surmenage_transports                        | integer            |
+| tranche_age                                 | text               |
+
+---
+
+### 🔹 `historique_predictions`
+
+Journalisation des prédictions réalisées via l’API.
+
+| Colonne         | Type                     | Contraintes     |
+|----------------|--------------------------|-----------------|
+| id             | integer                  | PRIMARY KEY     |
+| id_employee    | integer                  | NOT NULL        |
+| prediction     | integer                  | NOT NULL        |
+| donnees_input  | jsonb                    | NOT NULL        |
+| date_prediction| timestamp (sans fuseau)  | DEFAULT CURRENT_TIMESTAMP |
+
+---

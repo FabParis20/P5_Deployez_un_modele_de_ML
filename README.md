@@ -93,8 +93,7 @@ Ce dépôt **actuel** se concentre sur :
 ## 📂 Documentation complémentaire
 
 - 🧪 [Standards de code et pratiques ML](docs/README-standards.md)
-- ⚙️ [Workflow CI/CD](docs/ci-cd/definition-workflow.md)
-- 🧱 [Schéma relationnel PostgreSQL](docs/sql/schema_base_donnees.md)
+- 🧱 [Schéma relationnel PostgreSQL](docs/schema_base_donnees.md)
 
 ## Notes complémentaires
 ### 📁 notebooks/catboost_info/
