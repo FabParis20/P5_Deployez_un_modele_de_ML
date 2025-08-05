@@ -76,3 +76,4 @@ Un test minimal est fourni dans ce dépôt pour vérifier :
 📌 Les tests liés à l’API FastAPI (erreurs 404, prédiction via endpoint, enregistrement en BDD, etc.) sont décrits dans le dépôt dédié à la phase 2.
 
 
+## Modifs README
